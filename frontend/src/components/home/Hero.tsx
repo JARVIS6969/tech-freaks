@@ -14,7 +14,7 @@ export default function Hero() {
           </p>
 
           <h1 className="font-display text-4xl font-semibold leading-[1.1] text-brown md:text-6xl">
-            Experience History
+            Experience 
             <br />
             <span className="gold-text-gradient">Like Never Before.</span>
           </h1>
