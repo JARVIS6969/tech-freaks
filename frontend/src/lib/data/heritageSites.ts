@@ -1,83 +1,69 @@
 import { HeritageSite } from "@/types/heritage";
 
-/**
- * Demo dataset for HeritageLens.
- *
- * This file exists so the whole app is fully click-through-able with zero
- * backend configuration (ideal for a hackathon demo). In production, swap
- * these reads for calls to `src/lib/supabase/queries.ts`, which hit the
- * `heritage_sites` table defined in `supabase/schema.sql`. The shape is
- * identical, so no component code needs to change — see docs/DATABASE_SCHEMA.md.
- */
 export const heritageSites: HeritageSite[] = [
   {
     id: "1",
-    name: "Modhera Sun Temple",
-    slug: "modhera-sun-temple",
+    name: "Taj Mahal",
+    slug: "taj-mahal",
     short_description:
-      "An 11th-century Sun temple famed for its stepwell and solar-aligned sanctum.",
+      "An ivory-white marble mausoleum built by Shah Jahan in memory of Mumtaz Mahal.",
     description:
-      "Built by King Bhima I of the Chaulukya dynasty, the Modhera Sun Temple is designed so the first rays of the equinox sun strike the sanctum's idol directly. The complex spans three parts — the shrine, the assembly hall (Sabha Mandapa), and the sacred Surya Kund stepwell — each carved with intricate depictions of deities, dancers, and the 12 zodiac signs.",
-    state: "Gujarat",
-    city: "Modhera",
-    latitude: 23.5834,
-    longitude: 72.1275,
+      "Commissioned by Mughal Emperor Shah Jahan, the Taj Mahal was built as a mausoleum for his wife Mumtaz Mahal. Construction began in 1632 and the main structure was completed in 1648. Standing on the banks of the Yamuna River, it is celebrated for its white marble facade, central dome, four minarets, and intricate pietra dura inlay work.",
+    state: "Uttar Pradesh",
+    city: "Agra",
+    latitude: 27.1751,
+    longitude: 78.0421,
     historical_period: "Medieval",
-    construction_date: "1026–1027 CE",
-    heritage_type: "Temple",
+    construction_date: "1632–1648 CE",
+    heritage_type: "Palace",
     cultural_significance:
-      "Regarded as one of the finest examples of Solanki-era architecture, the temple reflects the Chaulukya dynasty's devotion to Surya, the sun god, and their mastery of stone craftsmanship.",
+      "Widely regarded as the finest example of Indo-Islamic architecture and a global symbol of enduring love.",
     architectural_details:
-      "Constructed from sandstone with no mortar, using interlocking stone joinery. The Surya Kund is a stepped tank with 108 miniature shrines lining its terraces.",
+      "Built from white marble with a central dome, four minarets, and extensive pietra dura (stone inlay) work depicting floral motifs.",
     historical_facts: [
-      "The temple was never used for worship after invasions in the 13th century damaged the main idol.",
-      "The stepwell (Kund) is one of the oldest surviving of its kind in India.",
-      "Every pillar in the Sabha Mandapa is carved with a unique motif — no two are identical.",
+      "It took an estimated 20,000 artisans over 16 years to complete.",
+      "The marble changes color throughout the day — pinkish at dawn, white at noon, golden at moonlight.",
+      "It is a UNESCO World Heritage Site and one of the New Seven Wonders of the World.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/taj_mahal.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
     drone_view_url: null,
     historical_reconstruction_url: null,
     audio_url: null,
-    is_unesco: false,
+    is_unesco: true,
     created_at: "2026-01-01T00:00:00Z",
   },
   {
     id: "2",
-    name: "Konark Sun Temple",
-    slug: "konark-sun-temple",
+    name: "Red Fort",
+    slug: "red-fort",
     short_description:
-      "A 13th-century chariot-shaped temple dedicated to the sun god Surya.",
+      "The massive red sandstone palace-fort of Shah Jahan's capital, Shahjahanabad.",
     description:
-      "Conceived as a colossal stone chariot with 24 carved wheels drawn by seven horses, the Konark Sun Temple is one of India's most celebrated UNESCO World Heritage Sites. Its walls are covered in intricate friezes depicting daily life, mythology, and courtly scenes of the Eastern Ganga dynasty.",
-    state: "Odisha",
-    city: "Konark",
-    latitude: 19.8876,
-    longitude: 86.0945,
+      "Built by Emperor Shah Jahan as the seat of power for his new capital, Shahjahanabad, the Red Fort is famed for its towering red sandstone walls. Its architecture blends Mughal, Persian, Timurid, and Indian traditions, and it remains a symbol of India's independence, hosting the Prime Minister's Independence Day address each year.",
+    state: "Delhi",
+    city: "Delhi",
+    latitude: 28.6562,
+    longitude: 77.241,
     historical_period: "Medieval",
-    construction_date: "1250 CE",
-    heritage_type: "Temple",
+    construction_date: "1638–1648 CE",
+    heritage_type: "Fort",
     cultural_significance:
-      "Commissioned by King Narasimhadeva I, the temple is a masterpiece of Kalinga architecture and a symbol of Odisha's cultural identity.",
+      "A symbol of Mughal power and later of India's independence movement, the fort blends multiple architectural traditions into one cohesive style.",
     architectural_details:
-      "The temple's wheels function as sundials, accurately telling time from the shadows cast. Built from Khondalite rock, transported over 100 km to the site.",
+      "Massive red sandstone ramparts enclosing palaces, pavilions, and gardens, combining Mughal, Persian, Timurid, and Indian design elements.",
     historical_facts: [
-      "The temple is also known as the 'Black Pagoda' by European sailors due to its dark color and use as a navigation landmark.",
-      "The main sanctum tower collapsed centuries ago; only the assembly hall (Jagamohana) survives intact.",
-      "Each of the 24 wheels is 3 meters in diameter and precisely tells the time of day.",
+      "It served as the main residence of Mughal emperors for nearly 200 years.",
+      "The fort's Lahori Gate is where India's Prime Minister hoists the flag every Independence Day.",
+      "It is a UNESCO World Heritage Site.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/red_fort.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
@@ -111,11 +97,9 @@ export const heritageSites: HeritageSite[] = [
       "Hampi's musical pillars produce different musical notes when tapped.",
       "The empire fell after the 1565 Battle of Talikota, and the city was sacked and abandoned.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/hampi.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
@@ -149,11 +133,9 @@ export const heritageSites: HeritageSite[] = [
       "The Kailasa Temple at Ellora is twice the size of the Parthenon.",
       "Ajanta's murals are among the earliest surviving examples of Indian painting.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/ajanta_caves.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
@@ -165,40 +147,38 @@ export const heritageSites: HeritageSite[] = [
   },
   {
     id: "5",
-    name: "Khajuraho Group of Monuments",
-    slug: "khajuraho",
+    name: "Amer Fort",
+    slug: "amer-fort",
     short_description:
-      "Chandela-era temples renowned for their intricate sculptural artistry.",
+      "A magnificent Rajput fort-palace overlooking Maota Lake near Jaipur.",
     description:
-      "Built by the Chandela dynasty, the Khajuraho temples are famous for their nagara-style spires and elaborate sculptures depicting daily life, deities, and philosophical concepts of dharma, artha, kama, and moksha.",
-    state: "Madhya Pradesh",
-    city: "Khajuraho",
-    latitude: 24.8318,
-    longitude: 79.9199,
+      "Amer Fort is a majestic Rajput fort-palace built from pale yellow and pink sandstone, with white marble accents overlooking Maota Lake. It represents the fusion of Rajput and Mughal architectural styles, with Mirza Raja Jai Singh I adding important buildings and gardens during the 17th century.",
+    state: "Rajasthan",
+    city: "Jaipur",
+    latitude: 26.9855,
+    longitude: 75.8513,
     historical_period: "Medieval",
-    construction_date: "950–1050 CE",
-    heritage_type: "Temple",
+    construction_date: "1592 CE onward",
+    heritage_type: "Fort",
     cultural_significance:
-      "Of an original 85 temples, only about 25 survive — together forming one of the richest surviving collections of medieval Indian sculpture.",
+      "Amer Fort is a landmark example of the Rajput-Mughal architectural style and served as the seat of the Kachwaha Rajput rulers.",
     architectural_details:
-      "Temples are raised on high plinths with soaring shikharas (spires) and richly layered sculptural bands running the full circumference of each structure.",
+      "Built with pale yellow and pink sandstone and white marble, featuring the Sheesh Mahal (Mirror Palace), Diwan-i-Aam, and terraced gardens.",
     historical_facts: [
-      "The temples were hidden by dense forest for centuries until an English engineer documented them in 1838.",
-      "Each temple follows precise geometric and astronomical alignment principles.",
-      "The complex is divided into western, eastern, and southern groups.",
+      "It overlooks Maota Lake, the fort's main water source.",
+      "The Sheesh Mahal's walls and ceilings are covered in intricate mirror mosaics.",
+      "Mirza Raja Jai Singh I expanded the fort significantly in the 17th century.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/amer_fort.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
     drone_view_url: null,
     historical_reconstruction_url: null,
     audio_url: null,
-    is_unesco: true,
+    is_unesco: false,
     created_at: "2026-01-01T00:00:00Z",
   },
   {
@@ -225,11 +205,9 @@ export const heritageSites: HeritageSite[] = [
       "The four gateways are considered among the finest examples of early narrative relief sculpture in India.",
       "Sanchi has no direct connection to the life of the Buddha — it was likely chosen for its proximity to a prosperous trade route.",
     ],
-    main_image:
-      "/images/placeholder-heritage.jpg",
-    gallery_images: [
-      "/images/placeholder-heritage.jpg",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/sanchi_stupa.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,

@@ -14,14 +14,14 @@ export default function Hero() {
             </p>
 
             <h1 className="font-display text-4xl font-semibold leading-[1.1] text-brown md:text-6xl">
-              Experience
+              Our Heritage
               <br />
-              <span className="gold-text-gradient">Like Never Before.</span>
+              <span className="gold-text-gradient">Through Your Lens.</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base text-brown/70 md:text-lg">
-              Discover India&apos;s cultural heritage through AR, VR, 3D
-              exploration and immersive storytelling.
+              
+See the Past. Experience the Story. Preserve the Legacy through AR & 3D
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">

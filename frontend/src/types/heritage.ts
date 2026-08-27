@@ -16,6 +16,7 @@ export interface HeritageSite {
   architectural_details: string;
   historical_facts: string[];
   main_image: string;
+  video_url: string | null;
   gallery_images: string[];
   model_3d_url: string | null;
   ar_model_url: string | null;
