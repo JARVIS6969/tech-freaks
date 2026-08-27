@@ -14,7 +14,7 @@ export default function DroneView({
 
   const image =
     droneImageUrl ??
-    "https://images.unsplash.com/photo-1600100397319-0c9c7f6c1f01?q=80&w=1600&auto=format&fit=crop";
+    "/images/placeholder-heritage.jpg";
 
   return (
     <div>

@@ -35,10 +35,10 @@ export const heritageSites: HeritageSite[] = [
       "Every pillar in the Sabha Mandapa is carved with a unique motif — no two are identical.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1601921804429-ace8f47c2145?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,
@@ -74,9 +74,9 @@ export const heritageSites: HeritageSite[] = [
       "Each of the 24 wheels is 3 meters in diameter and precisely tells the time of day.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1621789098261-039a91a2e058?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1600100397608-f70fe2fbd2f2?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,
@@ -112,9 +112,9 @@ export const heritageSites: HeritageSite[] = [
       "The empire fell after the 1565 Battle of Talikota, and the city was sacked and abandoned.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1600100397319-0c9c7f6c1f01?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,
@@ -150,9 +150,9 @@ export const heritageSites: HeritageSite[] = [
       "Ajanta's murals are among the earliest surviving examples of Indian painting.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1621252179027-94459d278660?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,
@@ -188,9 +188,9 @@ export const heritageSites: HeritageSite[] = [
       "The complex is divided into western, eastern, and southern groups.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1621789098261-039a91a2e058?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1600100397608-f70fe2fbd2f2?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,
@@ -226,9 +226,9 @@ export const heritageSites: HeritageSite[] = [
       "Sanchi has no direct connection to the life of the Buddha — it was likely chosen for its proximity to a prosperous trade route.",
     ],
     main_image:
-      "https://images.unsplash.com/photo-1600100397319-0c9c7f6c1f01?q=80&w=1600&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     gallery_images: [
-      "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=1200&auto=format&fit=crop",
+      "/images/placeholder-heritage.jpg",
     ],
     model_3d_url: null,
     ar_model_url: null,

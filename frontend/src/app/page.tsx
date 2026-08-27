@@ -24,8 +24,8 @@ export default async function HomePage() {
         />
         <div className="mt-12">
           <BeforeAfterSlider
-            beforeImage="https://images.unsplash.com/photo-1601921804429-ace8f47c2145?q=80&w=1400&auto=format&fit=crop"
-            afterImage="https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1400&auto=format&fit=crop"
+            beforeImage="/images/placeholder-heritage.jpg"
+            afterImage="/images/placeholder-heritage.jpg"
           />
         </div>
       </section>
