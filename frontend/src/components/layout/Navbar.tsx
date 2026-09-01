@@ -25,11 +25,11 @@ export default function Navbar() {
         {/* ========== LOGO (top left) — change height here ========== */}
         <Link href="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)}>
           <Image
-            src="/images/heritage-logo.jpeg"
+            src="/images/heritage-logo-cropped.png"
             alt="HeritageLens"
             width={400}
             height={80}
-            style={{ height: "120px", width: "auto" }}
+            style={{ height: "70px", width: "auto" }}
             className="object-contain"
             priority
           />
