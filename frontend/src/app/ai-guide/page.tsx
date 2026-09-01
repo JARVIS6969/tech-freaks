@@ -14,7 +14,7 @@ export default async function AIGuidePage({
   const sites = await fetchAllHeritageSites();
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
+   <div className="mx-auto max-w-6xl px-5 pt-6 pb-8 md:px-8">
       <SectionHeading
         eyebrow="AI Heritage Guide"
         title="Ask the Heritage Guide"

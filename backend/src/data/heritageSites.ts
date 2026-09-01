@@ -1,132 +1,8 @@
 import { HeritageSite } from "@/types/heritage";
 
-/**
- * Demo dataset for HeritageLens.
- *
- * This file exists so the whole app is fully click-through-able with zero
- * backend configuration (ideal for a hackathon demo). In production, swap
- * these reads for calls to `src/lib/supabase/queries.ts`, which hit the
- * `heritage_sites` table defined in `supabase/schema.sql`. The shape is
- * identical, so no component code needs to change — see docs/DATABASE_SCHEMA.md.
- */
 export const heritageSites: HeritageSite[] = [
   {
     id: "1",
-    name: "Modhera Sun Temple",
-    slug: "modhera-sun-temple",
-    short_description:
-      "An 11th-century Sun temple famed for its stepwell and solar-aligned sanctum.",
-    description:
-      "Built by King Bhima I of the Chaulukya dynasty, the Modhera Sun Temple is designed so the first rays of the equinox sun strike the sanctum's idol directly. The complex spans three parts — the shrine, the assembly hall (Sabha Mandapa), and the sacred Surya Kund stepwell — each carved with intricate depictions of deities, dancers, and the 12 zodiac signs.",
-    state: "Gujarat",
-    city: "Modhera",
-    latitude: 23.5834,
-    longitude: 72.1275,
-    historical_period: "Medieval",
-    construction_date: "1026–1027 CE",
-    heritage_type: "Temple",
-    cultural_significance:
-      "Regarded as one of the finest examples of Solanki-era architecture, the temple reflects the Chaulukya dynasty's devotion to Surya, the sun god, and their mastery of stone craftsmanship.",
-    architectural_details:
-      "Constructed from sandstone with no mortar, using interlocking stone joinery. The Surya Kund is a stepped tank with 108 miniature shrines lining its terraces.",
-    historical_facts: [
-      "The temple was never used for worship after invasions in the 13th century damaged the main idol.",
-      "The stepwell (Kund) is one of the oldest surviving of its kind in India.",
-      "Every pillar in the Sabha Mandapa is carved with a unique motif — no two are identical.",
-    ],
-    main_image:
-      "https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1601921804429-ace8f47c2145?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
-    ],
-    model_3d_url: null,
-    ar_model_url: null,
-    vr_tour_url: null,
-    drone_view_url: null,
-    historical_reconstruction_url: null,
-    audio_url: null,
-    is_unesco: false,
-    created_at: "2026-01-01T00:00:00Z",
-  },
-  {
-    id: "2",
-    name: "Konark Sun Temple",
-    slug: "konark-sun-temple",
-    short_description:
-      "A 13th-century chariot-shaped temple dedicated to the sun god Surya.",
-    description:
-      "Conceived as a colossal stone chariot with 24 carved wheels drawn by seven horses, the Konark Sun Temple is one of India's most celebrated UNESCO World Heritage Sites. Its walls are covered in intricate friezes depicting daily life, mythology, and courtly scenes of the Eastern Ganga dynasty.",
-    state: "Odisha",
-    city: "Konark",
-    latitude: 19.8876,
-    longitude: 86.0945,
-    historical_period: "Medieval",
-    construction_date: "1250 CE",
-    heritage_type: "Temple",
-    cultural_significance:
-      "Commissioned by King Narasimhadeva I, the temple is a masterpiece of Kalinga architecture and a symbol of Odisha's cultural identity.",
-    architectural_details:
-      "The temple's wheels function as sundials, accurately telling time from the shadows cast. Built from Khondalite rock, transported over 100 km to the site.",
-    historical_facts: [
-      "The temple is also known as the 'Black Pagoda' by European sailors due to its dark color and use as a navigation landmark.",
-      "The main sanctum tower collapsed centuries ago; only the assembly hall (Jagamohana) survives intact.",
-      "Each of the 24 wheels is 3 meters in diameter and precisely tells the time of day.",
-    ],
-    main_image:
-      "https://images.unsplash.com/photo-1621789098261-039a91a2e058?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1600100397608-f70fe2fbd2f2?q=80&w=1200&auto=format&fit=crop",
-    ],
-    model_3d_url: null,
-    ar_model_url: null,
-    vr_tour_url: null,
-    drone_view_url: null,
-    historical_reconstruction_url: null,
-    audio_url: null,
-    is_unesco: true,
-    created_at: "2026-01-01T00:00:00Z",
-  },
-  {
-    id: "3",
-    name: "Hampi",
-    slug: "hampi",
-    short_description:
-      "The sprawling ruins of the Vijayanagara Empire's capital city.",
-    description:
-      "Once the second-largest medieval city in the world, Hampi's boulder-strewn landscape is dotted with temples, royal enclosures, market streets, and the iconic stone chariot at Vittala Temple. It served as the capital of the Vijayanagara Empire from 1336 to 1565 CE.",
-    state: "Karnataka",
-    city: "Hampi",
-    latitude: 15.335,
-    longitude: 76.46,
-    historical_period: "Medieval",
-    construction_date: "14th–16th century CE",
-    heritage_type: "Temple",
-    cultural_significance:
-      "Hampi represents the pinnacle of Vijayanagara art, engineering, and urban planning, and remains a living pilgrimage site around the Virupaksha Temple.",
-    architectural_details:
-      "Dravidian-style temple complexes combined with Indo-Islamic influences, granite monolithic sculptures, and an advanced aqueduct-based irrigation system.",
-    historical_facts: [
-      "The stone chariot at Vittala Temple has wheels that can still rotate.",
-      "Hampi's musical pillars produce different musical notes when tapped.",
-      "The empire fell after the 1565 Battle of Talikota, and the city was sacked and abandoned.",
-    ],
-    main_image:
-      "https://images.unsplash.com/photo-1600100397319-0c9c7f6c1f01?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=1200&auto=format&fit=crop",
-    ],
-    model_3d_url: null,
-    ar_model_url: null,
-    vr_tour_url: null,
-    drone_view_url: null,
-    historical_reconstruction_url: null,
-    audio_url: null,
-    is_unesco: true,
-    created_at: "2026-01-01T00:00:00Z",
-  },
-  {
-    id: "4",
     name: "Ajanta & Ellora Caves",
     slug: "ajanta-ellora-caves",
     short_description:
@@ -148,12 +24,123 @@ export const heritageSites: HeritageSite[] = [
       "Ajanta's caves were rediscovered by a British officer in 1819 while tiger hunting.",
       "The Kailasa Temple at Ellora is twice the size of the Parthenon.",
       "Ajanta's murals are among the earliest surviving examples of Indian painting.",
+      "The Kailasa Temple was commissioned by Rashtrakuta king Krishna I in the 8th century CE, dedicated to Lord Shiva and designed to represent Mount Kailash, his mythical Himalayan abode.",
+      "Ajanta's caves were built as monasteries and prayer halls where Buddhist monks lived and meditated, especially during the monsoon retreat season.",
     ],
-    main_image:
-      "https://images.unsplash.com/photo-1621252179027-94459d278660?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=1200&auto=format&fit=crop",
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/ajanta_caves.mp4",
+    model_3d_url: null,
+    ar_model_url: null,
+    vr_tour_url: null,
+    drone_view_url: null,
+    historical_reconstruction_url: null,
+    audio_url: null,
+    is_unesco: true,
+    created_at: "2026-01-01T00:00:00Z",
+  },
+  {
+    id: "2",
+    name: "Lal Mahal",
+    slug: "lal-mahal",
+    short_description:
+      "A reconstructed 17th-century palace linked to Chhatrapati Shivaji Maharaj's childhood.",
+    description:
+      "Lal Mahal was built by Shahaji Bhosale for his wife Jijabai and young son Shivaji, who spent part of his childhood here under Jijabai's guidance. The palace is also remembered as the site where Shivaji is said to have confronted the Mughal general Shaista Khan in 1663, escaping after wounding him.",
+    state: "Maharashtra",
+    city: "Pune",
+    latitude: 18.5195,
+    longitude: 73.8553,
+    historical_period: "Medieval",
+    construction_date: "1630s CE",
+    heritage_type: "Palace",
+    cultural_significance:
+      "A symbolic site in Maratha history, associated with Shivaji Maharaj's upbringing and one of the boldest episodes of his resistance against Mughal rule.",
+    architectural_details:
+      "A modest brick-and-timber Maratha-style residence, reconstructed in the 20th century with courtyards, a Jijabai statue, and period-style interiors.",
+    historical_facts: [
+      "The current structure is a 20th-century reconstruction built by the Pune Municipal Corporation.",
+      "It commemorates the 1663 night raid where Shivaji is said to have cut off Shaista Khan's fingers as he fled.",
+      "Jijabai is credited with instilling in young Shivaji the values that shaped the Maratha Empire.",
+      "Shahaji Bhosale built Lal Mahal so his wife Jijabai and son Shivaji would have a settled home in Pune while he served the Bijapur Sultanate elsewhere.",
     ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/lal_mahal.mp4",
+    model_3d_url: null,
+    ar_model_url: null,
+    vr_tour_url: null,
+    drone_view_url: null,
+    historical_reconstruction_url: null,
+    audio_url: null,
+    is_unesco: false,
+    created_at: "2026-01-01T00:00:00Z",
+  },
+  {
+    id: "3",
+    name: "Aga Khan Palace",
+    slug: "aga-khan-palace",
+    short_description:
+      "A grand Italianate palace turned freedom-movement memorial and Gandhi National Memorial.",
+    description:
+      "Built in 1892 by Sultan Mohammed Shah Aga Khan III, the palace became a place of confinement for Mahatma Gandhi, Kasturba Gandhi, and Mahadev Desai during the Quit India Movement (1942–44). Kasturba Gandhi and Mahadev Desai both passed away within its grounds and are memorialized there.",
+    state: "Maharashtra",
+    city: "Pune",
+    latitude: 18.5548,
+    longitude: 73.9022,
+    historical_period: "Colonial",
+    construction_date: "1892 CE",
+    heritage_type: "Palace",
+    cultural_significance:
+      "A key site of India's independence movement, now home to the Gandhi National Memorial Society and a museum of Gandhian history.",
+    architectural_details:
+      "Built in Italianate arches with sprawling lawns, the palace spans 19 acres and features spacious verandahs and domed halls.",
+    historical_facts: [
+      "Aga Khan III built the palace partly to provide employment relief during a regional famine.",
+      "The samadhis (memorials) of Kasturba Gandhi and Mahadev Desai stand in the palace gardens.",
+      "The Aga Khan family donated the palace to the Indian people in 1972 in honor of Gandhi.",
+      "Aga Khan III built the palace as his personal residence and to give paid work to villagers in the surrounding area during a famine year, decades before it became a British detention site for Gandhi.",
+    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/aga_khan_palace.mp4",
+    model_3d_url: null,
+    ar_model_url: null,
+    vr_tour_url: null,
+    drone_view_url: null,
+    historical_reconstruction_url: null,
+    audio_url: null,
+    is_unesco: false,
+    created_at: "2026-01-01T00:00:00Z",
+  },
+  {
+    id: "4",
+    name: "Chhatrapati Shivaji Maharaj Terminus",
+    slug: "chhatrapati-shivaji-terminus",
+    short_description:
+      "A Victorian Gothic Revival railway station and UNESCO World Heritage Site in Mumbai.",
+    description:
+      "Designed by British architect Frederick William Stevens, this terminus blends Victorian Gothic Revival architecture with traditional Indian palace architecture. Completed in 1887 to mark Queen Victoria's Golden Jubilee, it remains one of the busiest railway stations in India and a defining symbol of Mumbai's skyline.",
+    state: "Maharashtra",
+    city: "Mumbai",
+    latitude: 18.9398,
+    longitude: 72.8355,
+    historical_period: "Colonial",
+    construction_date: "1878–1887 CE",
+    heritage_type: "Monument",
+    cultural_significance:
+      "A UNESCO World Heritage Site recognized as an outstanding example of Victorian Gothic Revival architecture fused with Indian traditions, and a functioning icon of daily life in Mumbai.",
+    architectural_details:
+      "Features turrets, spires, pointed arches, and a striking central dome, along with stone carvings blending British and Indian decorative motifs.",
+    historical_facts: [
+      "Originally named Victoria Terminus, it was renamed in 1996 after Chhatrapati Shivaji Maharaj.",
+      "It took ten years to build and was designed to be Mumbai's grandest colonial-era structure.",
+      "It has been a UNESCO World Heritage Site since 2004.",
+      "The terminus was built by the Great Indian Peninsula Railway both as a functioning headquarters and terminal station, and as a monumental symbol of British colonial power and engineering, timed to mark Queen Victoria's Golden Jubilee.",
+    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/cst.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
@@ -165,78 +152,76 @@ export const heritageSites: HeritageSite[] = [
   },
   {
     id: "5",
-    name: "Khajuraho Group of Monuments",
-    slug: "khajuraho",
+    name: "Gateway of India",
+    slug: "gateway-of-india",
     short_description:
-      "Chandela-era temples renowned for their intricate sculptural artistry.",
+      "A monumental arch built to commemorate the 1911 royal visit of King George V.",
     description:
-      "Built by the Chandela dynasty, the Khajuraho temples are famous for their nagara-style spires and elaborate sculptures depicting daily life, deities, and philosophical concepts of dharma, artha, kama, and moksha.",
-    state: "Madhya Pradesh",
-    city: "Khajuraho",
-    latitude: 24.8318,
-    longitude: 79.9199,
-    historical_period: "Medieval",
-    construction_date: "950–1050 CE",
-    heritage_type: "Temple",
+      "Designed by architect George Wittet in the Indo-Saracenic style, the Gateway of India was built to commemorate the landing of King George V and Queen Mary at Apollo Bunder in 1911. Completed in 1924, it later became the ceremonial exit point for British troops leaving India in 1948.",
+    state: "Maharashtra",
+    city: "Mumbai",
+    latitude: 18.922,
+    longitude: 72.8347,
+    historical_period: "Colonial",
+    construction_date: "1913–1924 CE",
+    heritage_type: "Monument",
     cultural_significance:
-      "Of an original 85 temples, only about 25 survive — together forming one of the richest surviving collections of medieval Indian sculpture.",
+      "One of Mumbai's most recognized landmarks, symbolizing both the height of British colonial ceremony and the moment of India's transition to independence.",
     architectural_details:
-      "Temples are raised on high plinths with soaring shikharas (spires) and richly layered sculptural bands running the full circumference of each structure.",
+      "A basalt arch in Indo-Saracenic style rising 26 meters, blending Muslim architectural styles from 16th-century Gujarat with Hindu decorative elements.",
     historical_facts: [
-      "The temples were hidden by dense forest for centuries until an English engineer documented them in 1838.",
-      "Each temple follows precise geometric and astronomical alignment principles.",
-      "The complex is divided into western, eastern, and southern groups.",
+      "The foundation stone was laid in 1913, but construction wasn't completed until 1924.",
+      "The last British troops to leave India marched out through the Gateway in February 1948.",
+      "It faces the Arabian Sea and directly overlooks the Taj Mahal Palace Hotel.",
+      "The British government built the Gateway specifically as a ceremonial arch to commemorate King George V and Queen Mary's 1911 visit to India, the first by a reigning British monarch.",
     ],
-    main_image:
-      "https://images.unsplash.com/photo-1621789098261-039a91a2e058?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1600100397608-f70fe2fbd2f2?q=80&w=1200&auto=format&fit=crop",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/gateway_of_india.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
     drone_view_url: null,
     historical_reconstruction_url: null,
     audio_url: null,
-    is_unesco: true,
+    is_unesco: false,
     created_at: "2026-01-01T00:00:00Z",
   },
   {
     id: "6",
-    name: "Sanchi Stupa",
-    slug: "sanchi-stupa",
+    name: "Shaniwar Wada",
+    slug: "shaniwar-wada",
     short_description:
-      "One of the oldest stone structures in India, commissioned by Emperor Ashoka.",
+      "The fortified seat of the Peshwa rulers of the Maratha Empire in Pune.",
     description:
-      "The Great Stupa at Sanchi was originally commissioned by Emperor Ashoka in the 3rd century BCE and later expanded with elaborately carved gateways (toranas) depicting scenes from the life of the Buddha and Jataka tales.",
-    state: "Madhya Pradesh",
-    city: "Sanchi",
-    latitude: 23.4794,
-    longitude: 77.7398,
-    historical_period: "Ancient",
-    construction_date: "3rd century BCE",
-    heritage_type: "Stupa",
+      "Built in 1732, Shaniwar Wada served as the residence and seat of power for the Peshwas, who governed the Maratha Empire. Once a lavish fortified palace complex with grand gates and gardens, most of its wooden interior was destroyed by a fire in 1828, leaving the massive stone and brick fortification walls standing today.",
+    state: "Maharashtra",
+    city: "Pune",
+    latitude: 18.5195,
+    longitude: 73.8553,
+    historical_period: "Medieval",
+    construction_date: "1732 CE",
+    heritage_type: "Fort",
     cultural_significance:
-      "Sanchi remains one of the most complete and best-preserved examples of early Buddhist architecture in India.",
+      "A defining symbol of Pune and the seat of the Peshwa administration that governed much of the Maratha Empire during the 18th century.",
     architectural_details:
-      "A hemispherical dome (anda) atop a raised terrace, encircled by a carved stone railing (vedika) and four ornamental gateways (toranas) at the cardinal points.",
+      "Fortified walls up to 21 feet high enclose the complex, with five grand gates including the iconic spike-studded Delhi Darwaza, built to deter elephant charges.",
     historical_facts: [
-      "The stupa fell into obscurity for centuries after Buddhism declined in the region and was 'rediscovered' in 1818.",
-      "The four gateways are considered among the finest examples of early narrative relief sculpture in India.",
-      "Sanchi has no direct connection to the life of the Buddha — it was likely chosen for its proximity to a prosperous trade route.",
+      "A mysterious fire in 1828 destroyed the wooden palace interiors; the cause remains debated.",
+      "The complex once included ornamental fountains, including the famous Hazari Karanje (thousand-fountain).",
+      "Light and sound shows are now held at the site recounting Peshwa-era history.",
+      "Peshwa Bajirao I built Shaniwar Wada as his official residence and administrative headquarters after being granted the site by Chhatrapati Shahu, establishing Pune as the political capital of the Maratha Empire.",
     ],
-    main_image:
-      "https://images.unsplash.com/photo-1600100397319-0c9c7f6c1f01?q=80&w=1600&auto=format&fit=crop",
-    gallery_images: [
-      "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=1200&auto=format&fit=crop",
-    ],
+    main_image: "/images/placeholder-heritage.jpg",
+    gallery_images: ["/images/placeholder-heritage.jpg"],
+    video_url: "/videos/shaniwar_wada.mp4",
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
     drone_view_url: null,
     historical_reconstruction_url: null,
     audio_url: null,
-    is_unesco: true,
+    is_unesco: false,
     created_at: "2026-01-01T00:00:00Z",
   },
 ];

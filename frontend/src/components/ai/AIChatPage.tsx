@@ -42,36 +42,47 @@ export default function AIChatPage({
 
   const selectedSite = sites.find((s) => s.slug === selectedSlug);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+ const isFirstRender = useRef(true);
+
+useEffect(() => {
+  if (isFirstRender.current) {
+    isFirstRender.current = false;
+    return;
+  }
+  bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+}, [messages]);
 
   async function sendMessage(question: string) {
-    if (!question.trim() || loading) return;
-    setMessages((m) => [...m, { role: "user", content: question }]);
-    setInput("");
-    setLoading(true);
+  if (!question.trim() || loading) return;
+  const newUserMessage: Message = { role: "user", content: question };
+  setMessages((m) => [...m, newUserMessage]);
+  setInput("");
+  setLoading(true);
 
-    try {
-     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ai-guide`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question, siteSlug: selectedSlug }),
-      });
-      const data = await res.json();
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", content: data.answer ?? data.error ?? "Sorry, something went wrong." },
-      ]);
-    } catch {
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", content: "I couldn't reach the guide service. Please try again." },
-      ]);
-    } finally {
-      setLoading(false);
-    }
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ai-guide`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question,
+        siteSlug: selectedSlug,
+        history: messages, // send everything asked/answered so far
+      }),
+    });
+    const data = await res.json();
+    setMessages((m) => [
+      ...m,
+      { role: "assistant", content: data.answer ?? data.error ?? "Sorry, something went wrong." },
+    ]);
+  } catch {
+    setMessages((m) => [
+      ...m,
+      { role: "assistant", content: "I couldn't reach the guide service. Please try again." },
+    ]);
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
@@ -99,7 +110,7 @@ export default function AIChatPage({
       </aside>
 
       {/* Chat */}
-      <div className="flex h-[70vh] flex-col rounded-3xl border border-gold/15 bg-white shadow-card">
+      <div className="flex max-h-[70vh] flex-col rounded-3xl border border-gold/15 bg-white shadow-card">
         <div className="flex items-center gap-2 border-b border-gold/10 px-6 py-4">
           <Sparkles className="h-4 w-4 text-gold" />
           <p className="font-display font-semibold text-brown">

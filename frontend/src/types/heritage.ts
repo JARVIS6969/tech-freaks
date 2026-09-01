@@ -27,7 +27,6 @@ export interface HeritageSite {
   is_unesco: boolean;
   created_at: string;
 }
-
 // Mirrors the `heritage_objects` table — sub-elements of a site
 // (pillars, sculptures, entrances, etc.) used by the 3D hotspot viewer.
 export interface HeritageObject {
@@ -42,20 +41,17 @@ export interface HeritageObject {
   position?: { x: number; y: number; z: number };
   created_at: string;
 }
-
 export type HistoricalPeriod = "Ancient" | "Medieval" | "Colonial" | "Modern";
-
 export type HeritageType =
   | "Temple"
   | "Fort"
   | "Cave"
   | "Stupa"
   | "Palace"
-  | "Stepwell";
-
+  | "Stepwell"
+  | "Monument";
 // Mirrors `user_explorations.experience_type`
 export type ExperienceType = "AR" | "VR" | "3D" | "Drone" | "Article";
-
 export interface AIQuestion {
   id: string;
   user_id: string | null;

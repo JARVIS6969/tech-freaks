@@ -3,6 +3,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AIGuideWidget from "@/components/ai/AIGuideWidget";
+import ScrollToTop from "@/components/layout/ScrollToTop";
+
 import "./globals.css";
 
 const displayFont = Playfair_Display({
@@ -31,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <body className="flex min-h-screen flex-col bg-ivory font-body text-brown antialiased">
+        <ScrollToTop />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
