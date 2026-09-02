@@ -1,5 +1,6 @@
 import Hero from "@/components/home/Hero";
 import FeaturedHeritage from "@/components/home/FeaturedHeritage";
+import FeaturedArtforms from "@/components/home/FeaturedArtforms";
 import Timeline from "@/components/home/Timeline";
 import BeforeAfterSlider from "@/components/heritage/BeforeAfterSlider";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -14,6 +15,7 @@ export default async function HomePage() {
       <Hero />
 
       <FeaturedHeritage sites={sites.slice(0, 6)} />
+      <FeaturedArtforms />
 
       {/* Historical Reconstruction preview */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">

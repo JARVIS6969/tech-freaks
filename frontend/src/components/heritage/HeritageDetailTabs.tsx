@@ -61,7 +61,7 @@ export default function HeritageDetailTabs({
             siteName={site.name}
           />
         )}
-        {active === "ar" && <ARExperience siteName={site.name} />}
+        {active === "ar" && <ARExperience siteName={site.name} modelUrl={site.model_3d_url} />}
         {active === "vr" && <VRTour vrTourUrl={site.vr_tour_url} />}
         {active === "drone" && <DroneView droneImageUrl={site.drone_view_url} />}
         {active === "reconstruction" && (

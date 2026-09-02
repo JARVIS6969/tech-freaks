@@ -9,6 +9,7 @@ import GoldButton from "@/components/ui/GoldButton";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/explore", label: "Explore" },
+  { href: "/artforms", label: "Artforms" },
   { href: "/ai-guide", label: "AI Guide" },
   { href: "/report", label: "Report" },
   { href: "/contact", label: "Contact / About" },

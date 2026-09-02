@@ -1,8 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { RotateCw, ZoomIn, ZoomOut, Move, Maximize, Info } from "lucide-react";
 import { HeritageObject } from "@/types/heritage";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, Stage } from "@react-three/drei";
+
+function Model({ url }: { url: string }) {
+  const { scene } = useGLTF(url);
+  return <primitive object={scene} />;
+}
 
 interface Model3DViewerProps {
   modelUrl: string | null;
@@ -10,31 +17,6 @@ interface Model3DViewerProps {
   siteName: string;
 }
 
-/**
- * Dedicated 3D viewer for a heritage monument.
- *
- * PRODUCTION NOTE: when `modelUrl` (a .glb/.gltf asset) is available, replace
- * the placeholder <div> below with a React Three Fiber <Canvas> that loads
- * the model via useGLTF and attaches OrbitControls. Example:
- *
- *   import { Canvas } from "@react-three/fiber";
- *   import { OrbitControls, useGLTF } from "@react-three/drei";
- *
- *   function Model({ url }: { url: string }) {
- *     const { scene } = useGLTF(url);
- *     return <primitive object={scene} />;
- *   }
- *
- *   <Canvas camera={{ position: [0, 1.5, 4], fov: 45 }}>
- *     <ambientLight intensity={0.6} />
- *     <directionalLight position={[3, 5, 2]} intensity={1} />
- *     <Model url={modelUrl} />
- *     <OrbitControls enablePan enableZoom enableRotate />
- *   </Canvas>
- *
- * Until a real .glb asset is wired up, this renders a clearly labeled demo
- * viewport with the same control affordances so the UX/flow can be demoed.
- */
 export default function Model3DViewer({
   modelUrl,
   objects,
@@ -49,25 +31,40 @@ export default function Model3DViewer({
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
       {/* Viewport */}
-      <div className="relative aspect-square overflow-hidden rounded-3xl border border-gold/15 bg-gradient-to-br from-cream to-ivory shadow-card lg:aspect-auto">
+     <div className="relative h-[500px] w-full overflow-hidden rounded-3xl border border-gold/15 bg-gradient-to-br from-cream to-ivory shadow-card md:h-[600px] lg:h-[650px]">
         {!modelUrl && (
-          <div className="absolute left-4 top-4 rounded-full bg-brown/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-ivory">
+          <div className="absolute left-4 top-4 z-10 rounded-full bg-brown/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-ivory">
             Demo Placeholder — no .glb model attached
           </div>
         )}
 
-        <div
-          className="flex h-full w-full items-center justify-center transition-transform duration-300"
-          style={{ transform: `rotate(${rotation}deg) scale(${zoom})` }}
-        >
-          <div className="flex h-40 w-40 items-center justify-center rounded-full border-2 border-dashed border-gold/40 text-center text-xs text-brown/40 md:h-56 md:w-56">
-            3D model of
-            <br />
-            {siteName}
+        {modelUrl ? (
+          // Real 3D model — React Three Fiber
+          <div className="h-full w-full">
+            <Canvas camera={{ position: [0, 1.5, 4], fov: 45 }}>
+              <Suspense fallback={null}>
+                <Stage environment="city" intensity={0.6}>
+                  <Model url={modelUrl} />
+                </Stage>
+                <OrbitControls enablePan enableZoom enableRotate />
+              </Suspense>
+            </Canvas>
           </div>
-        </div>
+        ) : (
+          // Fallback placeholder (kept from original)
+          <div
+            className="flex h-full w-full items-center justify-center transition-transform duration-300"
+            style={{ transform: `rotate(${rotation}deg) scale(${zoom})` }}
+          >
+            <div className="flex h-40 w-40 items-center justify-center rounded-full border-2 border-dashed border-gold/40 text-center text-xs text-brown/40 md:h-56 md:w-56">
+              3D model of
+              <br />
+              {siteName}
+            </div>
+          </div>
+        )}
 
-        {/* Hotspot markers (positions are illustrative) */}
+        {/* Hotspot markers — kept from your version */}
         {objects.map((obj, i) => (
           <button
             key={obj.id}
@@ -76,37 +73,39 @@ export default function Model3DViewer({
               left: `${30 + i * 15}%`,
               top: `${25 + (i % 2) * 35}%`,
             }}
-            className="absolute flex h-7 w-7 items-center justify-center rounded-full bg-gold-gradient text-ivory shadow-gold ring-4 ring-ivory/60 transition-transform hover:scale-110"
+            className="absolute z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gold-gradient text-ivory shadow-gold ring-4 ring-ivory/60 transition-transform hover:scale-110"
             aria-label={`Show info about ${obj.name}`}
           >
             <Info className="h-3.5 w-3.5" />
           </button>
         ))}
 
-        {/* Controls */}
-        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ivory/90 px-3 py-2 shadow-card backdrop-blur">
-          <IconButton onClick={() => setRotation((r) => r - 45)} label="Rotate left">
-            <RotateCw className="h-4 w-4 -scale-x-100" />
-          </IconButton>
-          <IconButton onClick={() => setRotation((r) => r + 45)} label="Rotate right">
-            <RotateCw className="h-4 w-4" />
-          </IconButton>
-          <IconButton onClick={() => setZoom((z) => Math.min(2, z + 0.2))} label="Zoom in">
-            <ZoomIn className="h-4 w-4" />
-          </IconButton>
-          <IconButton onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} label="Zoom out">
-            <ZoomOut className="h-4 w-4" />
-          </IconButton>
-          <IconButton onClick={() => { setZoom(1); setRotation(0); }} label="Reset view">
-            <Move className="h-4 w-4" />
-          </IconButton>
-          <IconButton onClick={() => {}} label="Fullscreen">
-            <Maximize className="h-4 w-4" />
-          </IconButton>
-        </div>
+        {/* Manual controls — only meaningful for the placeholder view */}
+        {!modelUrl && (
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ivory/90 px-3 py-2 shadow-card backdrop-blur">
+            <IconButton onClick={() => setRotation((r) => r - 45)} label="Rotate left">
+              <RotateCw className="h-4 w-4 -scale-x-100" />
+            </IconButton>
+            <IconButton onClick={() => setRotation((r) => r + 45)} label="Rotate right">
+              <RotateCw className="h-4 w-4" />
+            </IconButton>
+            <IconButton onClick={() => setZoom((z) => Math.min(2, z + 0.2))} label="Zoom in">
+              <ZoomIn className="h-4 w-4" />
+            </IconButton>
+            <IconButton onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} label="Zoom out">
+              <ZoomOut className="h-4 w-4" />
+            </IconButton>
+            <IconButton onClick={() => { setZoom(1); setRotation(0); }} label="Reset view">
+              <Move className="h-4 w-4" />
+            </IconButton>
+            <IconButton onClick={() => {}} label="Fullscreen">
+              <Maximize className="h-4 w-4" />
+            </IconButton>
+          </div>
+        )}
       </div>
 
-      {/* Info panel */}
+      {/* Info panel — kept from your version */}
       <div className="rounded-3xl border border-gold/15 bg-white p-6 shadow-card">
         <p className="text-xs font-semibold uppercase tracking-widest text-gold">
           Explore the Architecture

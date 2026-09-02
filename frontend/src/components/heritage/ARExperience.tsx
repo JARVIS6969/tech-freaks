@@ -1,30 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Camera, Smartphone, QrCode, ScanLine } from "lucide-react";
-import GoldButton from "@/components/ui/GoldButton";
+import "@google/model-viewer/dist/model-viewer.min.js";
 
-/**
- * AR Experience flow.
- *
- * PRODUCTION NOTE: real browser AR requires the WebXR Device API (or
- * `<model-viewer>` with `ar` + `ar-modes="scene-viewer webxr quick-look"`
- * for a simpler cross-platform path) and HTTPS + a supported mobile browser.
- * This component clearly separates the demo flow (below) from that
- * integration point, marked at STEP 3.
- */
-export default function ARExperience({ siteName }: { siteName: string }) {
-  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
-  const [supportsAR, setSupportsAR] = useState<boolean | null>(null);
+interface ARExperienceProps {
+  siteName: string;
+  modelUrl?: string | null;
+}
 
-  const checkSupport = () => {
-    // STEP 3 — PRODUCTION INTEGRATION POINT:
-    // if ("xr" in navigator) { navigator.xr.isSessionSupported("immersive-ar")... }
-    // For the demo, we deterministically show the graceful fallback so the
-    // judge/demo audience always sees the QR hand-off path.
-    setSupportsAR(false);
-    setStep(1);
-  };
+export default function ARExperience({ siteName, modelUrl }: ARExperienceProps) {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setIsMobile(checkMobile);
+  }, []);
 
   return (
     <div className="rounded-3xl border border-gold/15 bg-gradient-to-br from-brown to-brown/90 p-8 text-ivory shadow-card md:p-12">
@@ -40,31 +31,48 @@ export default function ARExperience({ siteName }: { siteName: string }) {
           the room around you, at real-world scale.
         </p>
 
-        {step === 0 && (
-          <GoldButton onClick={checkSupport} className="mt-8">
-            <Camera className="h-4 w-4" /> View in AR
-          </GoldButton>
+        {isMobile === true && modelUrl && (
+          <div className="mt-8 flex w-full max-w-sm flex-col items-center justify-center rounded-2xl border border-gold/25 bg-ivory/5 p-6">
+            {/* @ts-ignore - custom web component */}
+            <model-viewer
+              src={modelUrl}
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              camera-controls
+              style={{ width: "100%", height: "60px", backgroundColor: "transparent" }}
+            >
+              <button
+                slot="ar-button"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gold-gradient px-8 py-3 text-sm font-semibold text-brown shadow-gold transition-transform hover:scale-105"
+              >
+                <Camera className="h-4 w-4" /> Launch AR Camera
+              </button>
+            {/* @ts-ignore */}
+            </model-viewer>
+          </div>
         )}
 
-        {step === 1 && supportsAR === false && (
+        {isMobile === false && (
           <div className="mt-8 w-full max-w-sm rounded-2xl border border-gold/25 bg-ivory/5 p-6">
             <QrCode className="mx-auto h-24 w-24 text-gold-bright" strokeWidth={1} />
             <p className="mt-4 text-sm font-medium">
               Open AR on your mobile device
             </p>
             <p className="mt-1 text-xs text-ivory/60">
-              WebXR isn&apos;t available in this browser. Scan this QR code
-              with your phone camera to continue the AR experience on a
-              supported mobile browser.
+              AR requires a smartphone camera and floor sensors. Open this
+              website on your mobile phone to view {siteName} in your
+              physical space.
             </p>
-            <p className="mt-3 text-[11px] uppercase tracking-wider text-gold-bright/80">
-              Demo placeholder — connect a real deep link in production
-            </p>
+          </div>
+        )}
+
+        {!modelUrl && isMobile !== null && (
+          <div className="mt-8 rounded-2xl border border-red-500/25 bg-red-500/10 p-4 text-sm text-red-200">
+            No 3D model path provided for {siteName}.
           </div>
         )}
       </div>
 
-      {/* Illustrative flow steps (for demo narration) */}
       <div className="mt-10 grid grid-cols-2 gap-4 border-t border-ivory/10 pt-8 md:grid-cols-4">
         <FlowStep icon={<Smartphone />} label="Select monument" />
         <FlowStep icon={<Camera />} label="Grant camera access" />
