@@ -9,24 +9,87 @@ export const metadata = {
 const artforms = [
   {
     title: "Warli Painting",
-    location: "Maharashtra · Tribal",
+    location: "Palghar, Thane · Tribal",
     description:
       "A tribal art form using geometric shapes to depict daily life and nature, originating from the Warli tribe.",
-    image: "/images/artforms/warli-painting.jpg",
+    image: "/images/warli.jpg.jpeg",
   },
   {
-    title: "Madhubani Painting",
-    location: "Bihar · Folk",
+    title: "Paithani Weaving",
+    location: "Paithan, Yeola · Textile",
     description:
-      "Vibrant folk art from the Mithila region, characterized by intricate patterns and natural dye colors.",
-    image: "/images/artforms/madhubani.jpg",
+      "Handwoven silk sarees known for rich colors, intricate borders, and traditional motifs like peacocks and flowers.",
+    image: "/images/paithani.jpg.jpeg",
+  },
+  {
+    title: "Sawantwadi Craft",
+    location: "Sindhudurg · Woodcraft",
+    description:
+      "Colourful wooden lacquerware and handcrafted toys developed under the patronage of the Sawant Bhonsle royal family.",
+    image: "/images/sawantwadi.jpg.jpeg",
+  },
+  {
+    title: "Lavani",
+    location: "Maharashtra · Folk Dance",
+    description:
+      "A powerful folk dance performed to dholki beats, known for graceful movements and expressive storytelling.",
+    image: "/images/lavani.jpg.jpeg",
+  },
+  {
+    title: "Tamasha",
+    location: "Maharashtra · Folk Theatre",
+    description:
+      "A vibrant folk theatre combining music, dance, drama, poetry and comedy, closely linked with Lavani performances.",
+    image: "/images/tamasha.jpg.jpeg",
+  },
+  {
+    title: "Powada",
+    location: "Maharashtra · Folk Ballad",
+    description:
+      "A Marathi ballad tradition celebrating heroic figures and Maratha history, performed by Shahir poet-singers.",
+    image: "/images/powada.jpg.jpeg",
+  },
+  {
+    title: "Koli Dance",
+    location: "Konkan Coast · Folk Dance",
+    description:
+      "A vibrant dance of the Koli fishing community reflecting their bond with the sea, boats and coastal life.",
+    image: "/images/kohli dance.jpg.jpeg",
+  },
+  {
+    title: "Gondhal",
+    location: "Maharashtra · Ritual Performance",
+    description:
+      "A devotional folk performance combining singing, narration, music and dance to honour deities like Khandoba.",
+    image: "/images/gondhal.jpg.jpeg",
+  },
+  {
+    title: "Dashavatara",
+    location: "Konkan Region · Folk Theatre",
+    description:
+      "Traditional Konkan folk theatre centered on stories of Lord Vishnu's ten avatars, rich in music and drama.",
+    image: "/images/Dashavatara.jpg.jpeg",
+  },
+  {
+    title: "Bharud",
+    location: "Maharashtra · Devotional Theatre",
+    description:
+      "Devotional musical storytelling associated with Sant Eknath, blending humour, songs and social messages.",
+    image: "/images/Bharud.jpg.jpeg",
+  },
+  {
+    title: "Gauri Dance",
+    location: "Vidarbha · Tribal Dance",
+    description:
+      "A ritual tribal dance celebrating Goddess Gauri, performed during harvest festivals and community celebrations.",
+    image: "/images/gauri dance.jpg.jpeg",
   },
   {
     title: "Pattachitra",
     location: "Odisha · Classical",
     description:
       "Traditional cloth-based scroll painting known for intricate details and mythological themes.",
-    image: "/images/artforms/pattachitra.jpg",
+    image: "/images/Pattachitra.jpg.jpeg",
   },
 ];
 
@@ -74,15 +137,6 @@ export default function ArtformsPage() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/artforms"
-            className="rounded-full border border-gold px-8 py-3 text-base font-semibold text-gold transition-colors hover:bg-gold hover:text-white"
-          >
-            View All Art Forms
-          </Link>
         </div>
       </div>
     </main>
