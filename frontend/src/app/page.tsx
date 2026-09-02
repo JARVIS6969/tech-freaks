@@ -24,8 +24,10 @@ export default async function HomePage() {
         />
         <div className="mt-12">
           <BeforeAfterSlider
-            beforeImage="/images/placeholder-heritage.jpg"
-            afterImage="/images/placeholder-heritage.jpg"
+            beforeImage="/images/shaniwarwada-historical.jpg"
+            afterImage="/images/shaniwarwada-present.jpg"
+            beforeLabel="Shaniwar Wada — Before the 1828 Fire"
+            afterLabel="Shaniwar Wada — Present Day"
           />
         </div>
       </section>

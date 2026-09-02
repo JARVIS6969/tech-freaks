@@ -1,6 +1,6 @@
 import GoldButton from "@/components/ui/GoldButton";
 import Badge from "@/components/ui/Badge";
-import { Sparkles, Box, Video as VideoIcon } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -50,24 +50,8 @@ See the Past. Experience the Story. Preserve the Legacy through AR & 3D
             >
               Your browser does not support the video tag.
             </video>
-            {/* Subtle overlay so floating badges stay readable */}
+            {/* Subtle overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-brown/30 via-transparent to-transparent" />
-          </div>
-
-          {/* Floating UI badges */}
-          <div className="absolute left-4 top-6 hidden animate-fade-up rounded-2xl border border-gold/20 bg-ivory/90 px-4 py-3 shadow-gold backdrop-blur md:flex md:items-center md:gap-2 [animation-delay:400ms]">
-            <Sparkles className="h-4 w-4 text-gold" />
-            <span className="text-sm font-medium text-brown">AR Ready</span>
-          </div>
-
-          <div className="absolute right-4 top-1/3 hidden animate-fade-up items-center gap-2 rounded-2xl border border-gold/20 bg-ivory/90 px-4 py-3 shadow-gold backdrop-blur md:flex [animation-delay:550ms]">
-            <Box className="h-4 w-4 text-gold" />
-            <span className="text-sm font-medium text-brown">3D Available</span>
-          </div>
-
-          <div className="absolute bottom-6 left-10 hidden animate-fade-up items-center gap-2 rounded-2xl border border-gold/20 bg-ivory/90 px-4 py-3 shadow-gold backdrop-blur md:flex [animation-delay:700ms]">
-            <VideoIcon className="h-4 w-4 text-gold" />
-            <span className="text-sm font-medium text-brown">360° Tour</span>
           </div>
         </div>
       </div>

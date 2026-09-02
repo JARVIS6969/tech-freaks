@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { getHeritageSiteBySlug } from "../data/heritageSites";
+import { getSuggestedTopics, joinWithAnd } from "../utils/siteTopics";
 
 const router = Router();
 
@@ -25,15 +26,22 @@ router.post("/", async (req: Request, res: Response) => {
     console.log("DEBUG apiKey present:", !!apiKey, apiKey ? apiKey.slice(0, 8) : null);
 
     if (!apiKey) {
-      return res.json({ answer: fallbackAnswer(question, site?.name), grounded: false });
+      return res.json({ answer: fallbackAnswer(question, site), grounded: false });
     }
 
     const systemPrompt = site
       ? `You are the "Heritage Guide" for HeritageLens, an AI assistant embedded in a cultural-heritage exploration app. ` +
         `Answer questions about "${site.name}" (${site.city}, ${site.state}) using ONLY the following verified facts. ` +
-        `If the question can't be answered from these facts, say so honestly rather than inventing details. ` +
+        `If the question can't be answered from these facts, briefly say that specific detail isn't in your verified ` +
+        `facts — don't just apologize and stop. Immediately pivot to 2-3 related things you CAN tell them about from ` +
+        `the topics below, phrased as an invitation, e.g. "I don't have specifics on that particular carving, but I ` +
+        `can tell you about who commissioned it or its architecture instead." ` +
         `Use the earlier conversation for context (e.g. "it", "that", follow-ups), but keep every factual claim grounded in the facts below. ` +
+        `If the message is just a greeting (hi, hello, hey, namaste, etc.) with no actual question, ` +
+        `reply with ONLY a short 1-2 sentence welcome naming the site and inviting them to ask about its ` +
+        `history, architecture, or sculptures. Do NOT explain the history yet. ` +
         `Keep answers under 120 words, warm and educational.\n\n` +
+        `Topics you have grounded facts for: ${getSuggestedTopics(site, 5).map((t) => t.label).join(", ")}.\n` +
         `Description: ${site.description}\n` +
         `Historical period: ${site.historical_period}\n` +
         `Construction date: ${site.construction_date}\n` +
@@ -67,11 +75,11 @@ router.post("/", async (req: Request, res: Response) => {
     });
 
     if (!response.ok) {
-      return res.json({ answer: fallbackAnswer(question, site?.name), grounded: false });
+      return res.json({ answer: fallbackAnswer(question, site), grounded: false });
     }
 
     const data = await response.json();
-    const answer = data.choices?.[0]?.message?.content ?? fallbackAnswer(question, site?.name);
+    const answer = data.choices?.[0]?.message?.content ?? fallbackAnswer(question, site);
 
     return res.json({ answer, grounded: !!site });
   } catch {
@@ -81,10 +89,15 @@ router.post("/", async (req: Request, res: Response) => {
   }
 });
 
-function fallbackAnswer(question: string, siteName?: string) {
-  return siteName
-    ? `That's a great question about ${siteName}. Connect a GROQ_API_KEY in .env to get a fully grounded answer here — for now, check the "Historical Significance" and "Interesting Facts" sections on the site's detail page.`
-    : `Select a heritage site first so the Heritage Guide can answer grounded in its verified history — or connect GROQ_API_KEY in .env to enable general Q&A.`;
+function fallbackAnswer(question: string, site?: ReturnType<typeof getHeritageSiteBySlug>) {
+  if (!site) {
+    return `Select a heritage site first so the Heritage Guide can answer grounded in its verified history — or connect GROQ_API_KEY in .env to enable general Q&A.`;
+  }
+  const topics = getSuggestedTopics(site, 3).map((t) => t.label);
+  const pivot = topics.length
+    ? `In the meantime, I can tell you about ${joinWithAnd(topics)}.`
+    : `Check the "Historical Significance" and "Interesting Facts" sections on the site's detail page.`;
+  return `I don't have a fully grounded AI answer for that yet — connect a GROQ_API_KEY in .env to enable it. ${pivot}`;
 }
 
 export default router;
