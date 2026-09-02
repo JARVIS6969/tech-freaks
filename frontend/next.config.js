@@ -9,6 +9,12 @@ const nextConfig = {
       { protocol: "https", hostname: "upload.wikimedia.org" },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = [...(config.externals || []), "@google/model-viewer"];
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;

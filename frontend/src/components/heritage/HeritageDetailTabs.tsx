@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Box, Camera, Video, Plane, GitCompareArrows } from "lucide-react";
 import { HeritageSite, HeritageObject } from "@/types/heritage";
-import Model3DViewer from "./Model3DViewer";
-import ARExperience from "./ARExperience";
 import VRTour from "./VRTour";
 import DroneView from "./DroneView";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import { cn } from "@/lib/utils";
+
+const Model3DViewer = dynamic(() => import("./Model3DViewer"), { ssr: false });
+const ARExperience = dynamic(() => import("./ARExperience"), { ssr: false });
 
 type Tab = "3d" | "ar" | "vr" | "drone" | "reconstruction";
 

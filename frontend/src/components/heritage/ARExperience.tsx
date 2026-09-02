@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Camera, Smartphone, QrCode, ScanLine } from "lucide-react";
-import "@google/model-viewer/dist/model-viewer.min.js";
 
 interface ARExperienceProps {
   siteName: string;
@@ -12,7 +11,9 @@ interface ARExperienceProps {
 export default function ARExperience({ siteName, modelUrl }: ARExperienceProps) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
-  useEffect(() => {
+   useEffect(() => {
+    // @ts-ignore
+    import("@google/model-viewer/dist/model-viewer.min.js");
     const checkMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     setIsMobile(checkMobile);
   }, []);
