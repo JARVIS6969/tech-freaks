@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -32,6 +33,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
+      <head>
+        {/* Google Model Viewer Script for AR functionality */}
+        <Script
+          type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="flex min-h-screen flex-col bg-ivory font-body text-brown antialiased">
         <ScrollToTop />
         <Navbar />

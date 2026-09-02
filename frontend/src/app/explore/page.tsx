@@ -58,18 +58,8 @@ export default async function ExplorePage() {
           <ARExperience siteName={featuredSite.name} />
         </div>
       </section>
+      
 
-      {/* VR */}
-      <section id="vr" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:px-8">
-        <SectionHeading
-          eyebrow="VR / 360° Tour"
-          title="Step Inside the Monument"
-          subtitle="Drag to look around, follow hotspots, and listen to narrated context at each stop."
-        />
-        <div className="mt-10">
-          <VRTour vrTourUrl={featuredSite.vr_tour_url} />
-        </div>
-      </section>
 
       {/* Drone */}
       <section className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:px-8">
