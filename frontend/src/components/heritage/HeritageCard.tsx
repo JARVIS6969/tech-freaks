@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Box, Video, Sparkles, ArrowUpRight } from "lucide-react";
+import { MapPin, Box, Sparkles, ArrowUpRight } from "lucide-react";
 import { HeritageSite } from "@/types/heritage";
 import Badge from "@/components/ui/Badge";
 
@@ -36,7 +36,7 @@ export default function HeritageCard({ site }: { site: HeritageSite }) {
             <Box className="h-3 w-3" /> 3D
           </Badge>
           <Badge>
-            <Video className="h-3 w-3" /> VR
+            <MapPin className="h-3 w-3" /> Map
           </Badge>
         </div>
         {site.is_unesco && (

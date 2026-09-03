@@ -13,6 +13,7 @@ const artforms = [
     description:
       "A tribal art form using geometric shapes to depict daily life and nature, originating from the Warli tribe.",
     image: "/images/warli.jpg.jpeg",
+    slug: "warli-painting", // ← added
   },
   {
     title: "Paithani Weaving",
@@ -20,6 +21,7 @@ const artforms = [
     description:
       "Handwoven silk sarees known for rich colors, intricate borders, and traditional motifs like peacocks and flowers.",
     image: "/images/paithani.jpg.jpeg",
+    slug: "paithani-weaving", // ← added
   },
   {
     title: "Sawantwadi Craft",
@@ -85,11 +87,11 @@ const artforms = [
     image: "/images/gauri dance.jpg.jpeg",
   },
   {
-    title: "Pattachitra",
-    location: "Odisha · Classical",
+    title: "Karvat Kathi (Karvati) Silk Weaving",
+    location: "Vidarbha region of Maharashtra,Bhandara district",
     description:
-      "Traditional cloth-based scroll painting known for intricate details and mythological themes.",
-    image: "/images/Pattachitra.jpg.jpeg",
+      "Karvat Kathi is a traditional Tussar-silk handloom from Vidarbha, famous for its distinctive saw-tooth (“karvat”) border and cultural significance in weddings and festivals",
+    image: "/images/Karvat-Kathi-(Karvati)-Silk-Weaving.jpg",
   },
 ];
 
@@ -128,12 +130,23 @@ export default function ArtformsPage() {
                 <p className="mt-3 text-sm text-brown/70">
                   {art.description}
                 </p>
-                <Link
-                  href="#"
-                  className="mt-4 inline-block text-sm font-semibold text-gold hover:underline"
-                >
-                  Explore →
-                </Link>
+
+                {/* Updated Explore link */}
+                {art.slug ? (
+                  <Link
+                    href={`/artforms/${art.slug}`}
+                    className="mt-4 inline-block text-sm font-semibold text-gold hover:underline"
+                  >
+                    Explore →
+                  </Link>
+                ) : (
+                  <Link
+                    href="#"
+                    className="mt-4 inline-block text-sm font-semibold text-gold hover:underline"
+                  >
+                    Explore →
+                  </Link>
+                )}
               </div>
             </div>
           ))}

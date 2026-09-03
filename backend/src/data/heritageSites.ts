@@ -1,4 +1,4 @@
-import { HeritageSite } from "@/types/heritage";
+import { HeritageSite } from "../types/heritage";
 
 export const heritageSites: HeritageSite[] = [
   {

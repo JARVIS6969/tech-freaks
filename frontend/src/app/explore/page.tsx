@@ -2,7 +2,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ExploreGrid from "@/components/heritage/ExploreGrid";
 import ARExperience from "@/components/heritage/ARExperience";
 import Model3DViewer from "@/components/heritage/Model3DViewer";
-import VRTour from "@/components/heritage/VRTour";
+import LocationMap from "@/components/heritage/LocationMap";
 import DroneView from "@/components/heritage/DroneView";
 import HeritageMap from "@/components/heritage/HeritageMap";
 import { fetchAllHeritageSites } from "@/lib/supabase/queries";
@@ -67,7 +67,13 @@ export default async function ExplorePage() {
           subtitle="Drag to look around, follow hotspots, and listen to narrated context at each stop."
         />
         <div className="mt-10">
-          <VRTour vrTourUrl={featuredSite.vr_tour_url} />
+          <LocationMap
+            name={featuredSite.name}
+            latitude={featuredSite.latitude}
+            longitude={featuredSite.longitude}
+            city={featuredSite.city}
+            state={featuredSite.state}
+          />
         </div>
       </section>
 

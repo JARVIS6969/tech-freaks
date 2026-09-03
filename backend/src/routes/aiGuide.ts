@@ -40,7 +40,8 @@ router.post("/", async (req: Request, res: Response) => {
         `If the message is just a greeting (hi, hello, hey, namaste, etc.) with no actual question, ` +
         `reply with ONLY a short 1-2 sentence welcome naming the site and inviting them to ask about its ` +
         `history, architecture, or sculptures. Do NOT explain the history yet. ` +
-        `Keep answers under 120 words, warm and educational.\n\n` +
+        `Keep every answer under 80 words maximum. Be warm and educational. ` +
+        `STRICT RULES: Never use any asterisks (*), never use markdown, never use bold, italic, or any special symbols. Write only plain clean sentences.\n\n` +
         `Topics you have grounded facts for: ${getSuggestedTopics(site, 5).map((t) => t.label).join(", ")}.\n` +
         `Description: ${site.description}\n` +
         `Historical period: ${site.historical_period}\n` +
@@ -49,7 +50,9 @@ router.post("/", async (req: Request, res: Response) => {
         `Architectural details: ${site.architectural_details}\n` +
         `Facts: ${site.historical_facts.join(" | ")}`
       : `You are the "Heritage Guide" for HeritageLens, an AI assistant about Indian cultural heritage. ` +
-        `Answer briefly and generate the response with few emojis and encourage the user to select a specific monument for grounded detail. ` +
+        `Answer briefly in under 80 words. ` +
+        `STRICT RULES: Never use any asterisks (*), never use markdown, never use bold or italic. Write only plain clean sentences. ` +
+        `Encourage the user to select a specific monument for grounded detail. ` +
         `Use the earlier conversation for context where relevant.`;
 
     // Cap history to the last N turns to avoid runaway token growth
@@ -69,7 +72,7 @@ router.post("/", async (req: Request, res: Response) => {
       },
       body: JSON.stringify({
         model: "openai/gpt-oss-120b",
-        max_tokens: 400,
+        max_tokens: 250,
         messages,
       }),
     });

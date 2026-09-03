@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { Box, Camera, Video, Plane, GitCompareArrows } from "lucide-react";
+import { Box, Camera, MapPin, Plane, GitCompareArrows } from "lucide-react";
 import { HeritageSite, HeritageObject } from "@/types/heritage";
-import VRTour from "./VRTour";
+import LocationMap from "./LocationMap";
 import DroneView from "./DroneView";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ type Tab = "3d" | "ar" | "vr" | "drone" | "reconstruction";
 const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
   { id: "3d", label: "3D View", icon: <Box className="h-4 w-4" /> },
   { id: "ar", label: "AR Experience", icon: <Camera className="h-4 w-4" /> },
-  { id: "vr", label: "VR Tour", icon: <Video className="h-4 w-4" /> },
+  { id: "vr", label: "Location", icon: <MapPin className="h-4 w-4" /> },
   { id: "drone", label: "Drone Tour", icon: <Plane className="h-4 w-4" /> },
   {
     id: "reconstruction",
@@ -64,7 +64,15 @@ export default function HeritageDetailTabs({
           />
         )}
         {active === "ar" && <ARExperience siteName={site.name} modelUrl={site.model_3d_url} />}
-        {active === "vr" && <VRTour vrTourUrl={site.vr_tour_url} />}
+        {active === "vr" && (
+          <LocationMap
+            name={site.name}
+            latitude={site.latitude}
+            longitude={site.longitude}
+            city={site.city}
+            state={site.state}
+          />
+        )}
         {active === "drone" && <DroneView droneImageUrl={site.drone_view_url} />}
         {active === "reconstruction" && (
           <BeforeAfterSlider

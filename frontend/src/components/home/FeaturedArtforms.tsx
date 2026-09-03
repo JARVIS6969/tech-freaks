@@ -17,11 +17,11 @@ const artforms = [
     image: "/images/paithani.jpg.jpeg",
   },
   {
-    title: "Pattachitra",
-    location: "Odisha · Classical",
+    title: "Karvat Kathi (Karvati) Silk Weaving",
+    location: "Vidarbha region of Maharashtra,Bhandara district",
     description:
-      "Traditional cloth-based scroll painting known for intricate details and mythological themes.",
-    image: "/images/Pattachitra.jpg.jpeg",
+      "Karvat Kathi is a traditional Tussar-silk handloom from Vidarbha, famous for its distinctive saw-tooth (“karvat”) border and cultural significance in weddings and festivals",
+    image: "/images/Karvat-Kathi-(Karvati)-Silk-Weaving.jpg",
   },
 ];
 

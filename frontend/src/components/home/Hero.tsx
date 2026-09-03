@@ -57,11 +57,7 @@ See the Past. Experience the Story. Preserve the Legacy through AR & 3D
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-5 pb-14 pt-8 md:justify-start md:px-8">
-        <Badge>AR Experience</Badge>
-        <Badge>3D Models</Badge>
-        <Badge>VR / 360° Tours</Badge>
-        <Badge>Drone Views</Badge>
-        <Badge>AI Heritage Guide</Badge>
+       
       </div>
     </section>
   );

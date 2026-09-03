@@ -22,7 +22,7 @@ const bodyFont = Inter({
 export const metadata: Metadata = {
   title: "HeritageLens — Experience History Like Never Before",
   description:
-    "An immersive cultural-heritage platform: explore Indian monuments through AR, VR, 3D models, drone views and an AI Heritage Guide.",
+    "An immersive cultural-heritage platform: explore Indian monuments through AR, 3D models, drone views and an AI Heritage Guide.",
 };
 
 export default function RootLayout({

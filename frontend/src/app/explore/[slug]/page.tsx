@@ -1,7 +1,10 @@
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Calendar, Landmark } from "lucide-react";
+
+import LocationMap from "@/components/heritage/LocationMap";
 import { fetchHeritageSiteBySlug } from "@/lib/supabase/queries";
 import { getObjectsForSite } from "@/lib/data/heritageObjects";
 import { heritageSites } from "@/lib/data/heritageSites";
@@ -119,9 +122,10 @@ export default async function HeritageDetailPage({ params }: PageProps) {
                 <GoldButton href={`#experience-ar`} variant="outline" size="sm" className="w-full">
                   Experience in AR
                 </GoldButton>
-                <GoldButton href={`#experience-vr`} variant="outline" size="sm" className="w-full">
-                  Take VR Tour
-                </GoldButton>
+                <GoldButton href="#location" variant="outline" size="sm" className="w-full">
+  View Location
+</GoldButton>
+                
                 <GoldButton href={`#experience-drone`} variant="outline" size="sm" className="w-full">
                   View Drone Tour
                 </GoldButton>
@@ -143,6 +147,26 @@ export default async function HeritageDetailPage({ params }: PageProps) {
         <div className="mt-16">
           <HeritageDetailTabs site={site} objects={objects} />
         </div>
+        {/* Location */}
+<section id="location" className="mt-16 scroll-mt-24">
+  <h2 className="font-display text-2xl font-semibold text-brown">
+    Location
+  </h2>
+
+  <p className="mt-2 text-brown/70">
+    {site.city}, {site.state}
+  </p>
+
+  <div className="mt-6">
+    <LocationMap
+      name={site.name}
+      latitude={site.latitude}
+      longitude={site.longitude}
+      city={site.city}
+      state={site.state}
+    />
+  </div>
+</section>
       </div>
     </div>
   );
