@@ -1,38 +1,18 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { Box, Camera, MapPin, Plane, GitCompareArrows } from "lucide-react";
+import { Box, Camera, MapPin, Plane, GitCompareArrows, Video } from "lucide-react";
 import { HeritageSite, HeritageObject } from "@/types/heritage";
 import LocationMap from "./LocationMap";
 import DroneView from "./DroneView";
 import BeforeAfterSlider from "./BeforeAfterSlider";
+import PlayOnClickVideo from "./PlayOnClickVideo";
 import { cn } from "@/lib/utils";
 
 const Model3DViewer = dynamic(() => import("./Model3DViewer"), { ssr: false });
 const ARExperience = dynamic(() => import("./ARExperience"), { ssr: false });
 
-type Tab = "3d" | "ar" | "vr" | "drone" | "reconstruction";
-
-const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
-  { id: "3d", label: "3D View", icon: <Box className="h-4 w-4" /> },
-  { id: "ar", label: "AR Experience", icon: <Camera className="h-4 w-4" /> },
-  { id: "vr", label: "Location", icon: <MapPin className="h-4 w-4" /> },
-  { id: "drone", label: "Drone Tour", icon: <Plane className="h-4 w-4" /> },
-  {
-    id: "reconstruction",
-    label: "Then vs Now",
-    icon: <GitCompareArrows className="h-4 w-4" />,
-  },
-];
-
-const HASH_TO_TAB: Record<string, Tab> = {
-  "experience-3d": "3d",
-  "experience-ar": "ar",
-  "experience-vr": "vr",
-  "experience-drone": "drone",
-  "experience-reconstruction": "reconstruction",
-};
+type Tab = "3d" | "ar" | "vr" | "drone" | "reconstruction" | "video";
 
 export default function HeritageDetailTabs({
   site,
@@ -41,6 +21,32 @@ export default function HeritageDetailTabs({
   site: HeritageSite;
   objects: HeritageObject[];
 }) {
+  const isLalMahal = site.slug === "lal-mahal";
+
+  const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
+    { id: "3d", label: "3D View", icon: <Box className="h-4 w-4" /> },
+    { id: "ar", label: "AR Experience", icon: <Camera className="h-4 w-4" /> },
+    { id: "vr", label: "Location", icon: <MapPin className="h-4 w-4" /> },
+    { id: "drone", label: "Drone Tour", icon: <Plane className="h-4 w-4" /> },
+    {
+      id: "reconstruction",
+      label: "Then vs Now",
+      icon: <GitCompareArrows className="h-4 w-4" />,
+    },
+    ...(isLalMahal
+      ? [{ id: "video" as Tab, label: "Animated Video", icon: <Video className="h-4 w-4" /> }]
+      : []),
+  ];
+
+  const HASH_TO_TAB: Record<string, Tab> = {
+    "experience-3d": "3d",
+    "experience-ar": "ar",
+    "experience-vr": "vr",
+    "experience-drone": "drone",
+    "experience-reconstruction": "reconstruction",
+    "experience-video": "video",
+  };
+
   const [active, setActive] = useState<Tab>("3d");
 
   useEffect(() => {
@@ -51,11 +57,7 @@ export default function HeritageDetailTabs({
         setActive(tab);
       }
     }
-
-    // handle case where page loads directly with a hash in the URL
     syncFromHash();
-
-    // handle sidebar anchor clicks changing the hash while already on the page
     window.addEventListener("hashchange", syncFromHash);
     return () => window.removeEventListener("hashchange", syncFromHash);
   }, []);
@@ -79,7 +81,6 @@ export default function HeritageDetailTabs({
           </button>
         ))}
       </div>
-
       <div className="mt-10">
         {active === "3d" && (
           <Model3DViewer
@@ -105,6 +106,12 @@ export default function HeritageDetailTabs({
               site.historical_reconstruction_url ?? site.gallery_images[0] ?? site.main_image
             }
             afterImage={site.main_image}
+          />
+        )}
+        {active === "video" && isLalMahal && (
+          <PlayOnClickVideo
+            src="/videos/lal_mahal_ani_video.mp4"
+            poster={site.main_image}
           />
         )}
       </div>

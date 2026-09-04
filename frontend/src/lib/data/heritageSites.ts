@@ -35,7 +35,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: "/models/ellora_caves__india.glb",
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/ajanta_ellora_pano.jpg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: true,
@@ -65,6 +65,31 @@ export const heritageSites: HeritageSite[] = [
       "It commemorates the 1663 night raid where Shivaji is said to have cut off Shaista Khan's fingers as he fled.",
       "Jijabai is credited with instilling in young Shivaji the values that shaped the Maratha Empire.",
     ],
+
+        why_visit: [
+      {
+        title: "Walk in the Footsteps of a Maratha Legend",
+        description:
+          "Step into the childhood home of Chhatrapati Shivaji Maharaj, where he spent his formative years under the guidance of his mother, Jijabai.",
+      },
+      {
+        title: "Relive History's Boldest Escape",
+        description:
+          "Stand at the site of the daring 1663 night raid, where Shivaji is said to have confronted the Mughal general Shaista Khan and escaped after wounding him.",
+      },
+      {
+        title: "Honor Jijabai's Legacy",
+        description:
+          "See the statue and courtyards dedicated to Jijabai, whose upbringing is credited with shaping the values that founded the Maratha Empire.",
+      },
+      {
+        title: "Experience Maratha-Style Architecture",
+        description:
+          "Explore the reconstructed brick-and-timber residence, rebuilt in period style with courtyards and interiors reflecting 17th-century Maratha design.",
+      },
+    ],
+
+    
     main_image: "/images/Lal_Mahaal_modern.jpg",
     gallery_images: [
       "/images/lal-mahal_old.webp",
@@ -75,7 +100,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: "/models/lal_mahal.glb",
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/lal_mahal_pano.jpeg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: false,
@@ -115,7 +140,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: "/models/agakhanpalace/source/agakhanpalace.glb",
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/aga_khan_palace_pano.jpg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: false,
@@ -155,7 +180,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: "/models/csmt.glb",
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/csmt_pano.jpeg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: true,
@@ -195,7 +220,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: "/models/gateway-of-india-model/source/model.glb",
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/gateway_of_india_pano.jpeg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: false,
@@ -236,7 +261,7 @@ export const heritageSites: HeritageSite[] = [
     model_3d_url: null,
     ar_model_url: null,
     vr_tour_url: null,
-    drone_view_url: null,
+    drone_view_url: "/images/shaniwar_wada_pano.jpg",
     historical_reconstruction_url: null,
     audio_url: null,
     is_unesco: false,

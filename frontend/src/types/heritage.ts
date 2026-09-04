@@ -15,6 +15,7 @@ export interface HeritageSite {
   cultural_significance: string;
   architectural_details: string;
   historical_facts: string[];
+  why_visit?: { title: string; description: string }[];
   main_image: string;
   video_url: string | null;
   gallery_images: string[];

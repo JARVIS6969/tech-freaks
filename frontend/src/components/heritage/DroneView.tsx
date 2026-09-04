@@ -1,89 +1,54 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { Plane } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useTexture } from "@react-three/drei";
+import * as THREE from "three";
+import { Compass } from "lucide-react";
 
+
+function Dome({ imageUrl }: { imageUrl: string }) {
+  const texture = useTexture(imageUrl);
+
+  return (
+    <mesh>
+      <sphereGeometry args={[500, 60, 40]} />
+      <meshBasicMaterial map={texture} side={THREE.BackSide} />
+    </mesh>
+  );
+}
 export default function DroneView({
   droneImageUrl,
 }: {
   droneImageUrl: string | null;
 }) {
-  const [mode, setMode] = useState<"drone" | "historical">("drone");
-
-  const image =
-    droneImageUrl ??
-    "/images/placeholder-heritage.jpg";
+  const panoImage = droneImageUrl ?? "/images/placeholder-heritage.jpg";
 
   return (
-    <div>
-      <div className="mb-6 flex justify-center gap-2">
-        <ToggleButton
-          active={mode === "drone"}
-          onClick={() => setMode("drone")}
-        >
-          Satellite / Drone View
-        </ToggleButton>
-        <ToggleButton
-          active={mode === "historical"}
-          onClick={() => setMode("historical")}
-        >
-          Historical Layout
-        </ToggleButton>
+    <div className="w-full">
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2 rounded-full bg-[#1C1613] px-3 py-1 text-xs font-medium text-[#FDFBF7]">
+          <Compass className="h-3.5 w-3.5 text-[#D4AF37]" /> Interactive 360° Panoramic View
+        </div>
+        <span className="text-xs text-[#5C4D44]">Click and drag to look around</span>
       </div>
 
-      <div className="relative aspect-video overflow-hidden rounded-3xl border border-gold/15 shadow-card">
-        <Image src={image} alt="Aerial view" fill className="object-cover" />
-        <div
-          className={cn(
-            "absolute inset-0 transition-opacity duration-500",
-            mode === "historical"
-              ? "bg-gold-dark/40 mix-blend-multiply"
-              : "bg-transparent"
-          )}
-        />
+      <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-[#D4AF37]/30 shadow-xl bg-[#1a1a1a]">
+        <Canvas camera={{ position: [0, 0, 0.1] }}>
+          <OrbitControls 
+            enableZoom={true} 
+            enablePan={false} 
+            rotateSpeed={-0.5} 
+          />
+          <Suspense fallback={null}>
+            <Dome imageUrl={panoImage} />
+          </Suspense>
+        </Canvas>
 
-        {/* Sample location markers */}
-        {["Main Structure", "Stepwell", "Outer Wall"].map((label, i) => (
-          <div
-            key={label}
-            className="absolute flex items-center gap-1.5 rounded-full bg-ivory/90 px-2.5 py-1 text-[11px] font-medium text-brown shadow-card"
-            style={{ left: `${25 + i * 22}%`, top: `${30 + (i % 2) * 30}%` }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            {label}
-          </div>
-        ))}
-
-        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-brown/80 px-3 py-1 text-xs font-medium text-ivory">
-          <Plane className="h-3.5 w-3.5" /> Aerial capture
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md text-white text-xs px-4 py-1.5 rounded-full font-sans tracking-wide pointer-events-none">
+          Drag to explore • Scroll to zoom
         </div>
       </div>
     </div>
-  );
-}
-
-function ToggleButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
-        active
-          ? "border-gold bg-gold text-ivory"
-          : "border-gold/30 text-brown/60 hover:border-gold hover:text-gold"
-      )}
-    >
-      {children}
-    </button>
   );
 }

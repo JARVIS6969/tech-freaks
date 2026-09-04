@@ -107,6 +107,25 @@ export default async function HeritageDetailPage({ params }: PageProps) {
                 ))}
               </ul>
             </div>
+
+            {site.why_visit && site.why_visit.length > 0 && (
+              <div>
+                <h2 className="font-display text-2xl font-semibold text-brown">
+                  Why You Should Visit
+                </h2>
+                <ul className="mt-3 space-y-4">
+                  {site.why_visit.map((item, i) => (
+                    <li key={i} className="flex gap-3 text-brown/70">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                      <span>
+                        <strong className="text-brown">{item.title}:</strong>{" "}
+                        {item.description}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </article>
 
           {/* Sticky action panel */}
