@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Box, Camera, MapPin, Plane, GitCompareArrows } from "lucide-react";
 import { HeritageSite, HeritageObject } from "@/types/heritage";
@@ -26,6 +26,14 @@ const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
   },
 ];
 
+const HASH_TO_TAB: Record<string, Tab> = {
+  "experience-3d": "3d",
+  "experience-ar": "ar",
+  "experience-vr": "vr",
+  "experience-drone": "drone",
+  "experience-reconstruction": "reconstruction",
+};
+
 export default function HeritageDetailTabs({
   site,
   objects,
@@ -34,6 +42,23 @@ export default function HeritageDetailTabs({
   objects: HeritageObject[];
 }) {
   const [active, setActive] = useState<Tab>("3d");
+
+  useEffect(() => {
+    function syncFromHash() {
+      const hash = window.location.hash.replace("#", "");
+      const tab = HASH_TO_TAB[hash];
+      if (tab) {
+        setActive(tab);
+      }
+    }
+
+    // handle case where page loads directly with a hash in the URL
+    syncFromHash();
+
+    // handle sidebar anchor clicks changing the hash while already on the page
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
 
   return (
     <div id="experience" className="scroll-mt-24">

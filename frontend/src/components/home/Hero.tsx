@@ -41,7 +41,7 @@ See the Past. Experience the Story. Preserve the Legacy through AR & 3D
             <video
               className="absolute inset-0 h-full w-full object-cover"
               src="/videos/heritage-hero.mp4"
-              poster="/images/heritage-hero-poster.jpg"
+              poster="/images/Gateway_of_india.jpeg"
               autoPlay
               muted
               loop

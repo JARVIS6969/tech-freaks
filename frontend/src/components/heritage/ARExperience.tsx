@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Camera, Smartphone, QrCode, ScanLine } from "lucide-react";
+import { Camera, Smartphone, ScanLine } from "lucide-react";
 
 interface ARExperienceProps {
   siteName: string;
@@ -10,13 +10,19 @@ interface ARExperienceProps {
 
 export default function ARExperience({ siteName, modelUrl }: ARExperienceProps) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [pageUrl, setPageUrl] = useState<string>("");
 
-   useEffect(() => {
+  useEffect(() => {
     // @ts-ignore
     import("@google/model-viewer/dist/model-viewer.min.js");
     const checkMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     setIsMobile(checkMobile);
+    setPageUrl(window.location.href);
   }, []);
+
+  const qrCodeSrc = pageUrl
+    ? `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=${encodeURIComponent(pageUrl)}`
+    : "";
 
   return (
     <div className="rounded-3xl border border-gold/15 bg-gradient-to-br from-brown to-brown/90 p-8 text-ivory shadow-card md:p-12">
@@ -55,14 +61,21 @@ export default function ARExperience({ siteName, modelUrl }: ARExperienceProps) 
 
         {isMobile === false && (
           <div className="mt-8 w-full max-w-sm rounded-2xl border border-gold/25 bg-ivory/5 p-6">
-            <QrCode className="mx-auto h-24 w-24 text-gold-bright" strokeWidth={1} />
+            {qrCodeSrc ? (
+              <img
+                src={qrCodeSrc}
+                alt="Scan to open AR on your phone"
+                className="mx-auto h-[180px] w-[180px] rounded-lg bg-white p-2"
+              />
+            ) : (
+              <div className="mx-auto h-[180px] w-[180px] animate-pulse rounded-lg bg-ivory/10" />
+            )}
             <p className="mt-4 text-sm font-medium">
               Open AR on your mobile device
             </p>
             <p className="mt-1 text-xs text-ivory/60">
-              AR requires a smartphone camera and floor sensors. Open this
-              website on your mobile phone to view {siteName} in your
-              physical space.
+              AR requires a smartphone camera and floor sensors. Scan this
+              code with your phone to view {siteName} in your physical space.
             </p>
           </div>
         )}
