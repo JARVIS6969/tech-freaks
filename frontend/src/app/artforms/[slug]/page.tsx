@@ -1,6 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Phone, MessageCircle, Mail, MapPin, Star } from "lucide-react";
+
+interface Seller {
+  name: string;
+  location: string;
+  phone: string;
+  whatsapp: string;
+  email: string;
+  priceRange: string;
+  rating: number;
+  yearsOfExperience: number;
+}
 
 const artformDetails: Record<
   string,
@@ -10,6 +22,7 @@ const artformDetails: Record<
     category: string;
     images: string[];
     video?: string;
+    sellers?: Seller[];
     sections: { heading: string; content: string[] }[];
   }
 > = {
@@ -21,16 +34,37 @@ const artformDetails: Record<
       "/images/warli.jpg.jpeg",
       "/images/warli1.jpeg",
       "/images/warli2.jpeg",
-      
     ],
     video: "/videos/warli.mp4",
+    sellers: [
+      {
+        name: "Jivya Soma Mashe Art Collective",
+        location: "Palghar, Maharashtra",
+        phone: "+91 98765 43210",
+        whatsapp: "+91 98765 43210",
+        email: "warliart.collective@example.com",
+        priceRange: "₹1,500 – ₹8,000",
+        rating: 4.8,
+        yearsOfExperience: 15,
+      },
+      {
+        name: "Anita Tribal Arts",
+        location: "Dahanu, Thane",
+        phone: "+91 91234 56789",
+        whatsapp: "+91 91234 56789",
+        email: "anita.tribalarts@example.com",
+        priceRange: "₹1,200 – ₹6,500",
+        rating: 4.6,
+        yearsOfExperience: 10,
+      },
+    ],
     sections: [
       {
         heading: "1. What is Warli Art?",
         content: [
           "Warli art is a traditional tribal painting style from Maharashtra, India, associated with the Warli community.",
           "It is famous for its simple geometric forms, especially circles, triangles, squares, and lines, which are used to represent people, animals, nature, celebrations, and everyday village life.",
-          "Despite its simple appearance, Warli paintings communicate stories about the community’s relationship with nature, social life, traditions, farming, festivals, and spirituality.",
+          "Despite its simple appearance, Warli paintings communicate stories about the community's relationship with nature, social life, traditions, farming, festivals, and spirituality.",
         ],
       },
       {
@@ -76,9 +110,7 @@ const artformDetails: Record<
       "/images/Paithani Weaving.jpeg",
       "/images/Paithani Weaving1.jpeg",
       "/images/paithani.jpg.jpeg",
-      
     ],
-    // video: "/videos/paithani.mp4",   // ← uncomment later when you add the video
     sections: [
       {
         heading: "1. What is Paithani Weaving?",
@@ -203,6 +235,83 @@ export default function ArtformDetailPage({
                 Your browser does not support the video tag.
               </video>
             </div>
+          </div>
+        )}
+
+        {/* Sellers Section (only shows if sellers exist) */}
+        {data.sellers && data.sellers.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+              Buy Authentic {data.title}
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Connect directly with verified artisans and support traditional
+              craftsmanship.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {data.sellers.map((seller, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-amber-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start justify-between">
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {seller.name}
+                    </h3>
+                    <div className="flex items-center gap-1 text-amber-500 text-sm font-medium">
+                      <Star className="h-4 w-4 fill-amber-500" />
+                      {seller.rating}
+                    </div>
+                  </div>
+
+                  <p className="mt-1 flex items-center gap-1.5 text-sm text-gray-500">
+                    <MapPin className="h-3.5 w-3.5" />
+                    {seller.location}
+                  </p>
+
+                  <p className="mt-2 text-sm text-gray-600">
+                    {seller.yearsOfExperience}+ years of experience
+                  </p>
+
+                  <p className="mt-2 text-base font-semibold text-amber-700">
+                    {seller.priceRange}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    
+                      <a
+                        href={`tel:${seller.phone.replace(/\s/g, "")}`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700 transition-colors"
+                    >
+                      <Phone className="h-3.5 w-3.5" />
+                      Call
+                    </a>
+                    
+                      <a
+                        href={`https://wa.me/${seller.whatsapp.replace(/[\s+]/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 transition-colors"
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" />
+                      WhatsApp
+                    </a>
+                    
+                      <a
+                        href={`mailto:${seller.email}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 px-4 py-2 text-sm font-medium text-amber-700 hover:bg-amber-50 transition-colors"
+                    >
+                      <Mail className="h-3.5 w-3.5" />
+                      Email
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-gray-400">
+              * Seller details shown here are sample/demo data for
+              demonstration purposes.
+            </p>
           </div>
         )}
 
